@@ -1,8 +1,7 @@
-const gameOver = () => {
+const gameOver = () => { // sistema de derrota
     snake.arr.forEach( (item, index) => {
         if (index !== 0) {
             if (snake.arr[0].x === item.x && snake.arr[0].y === item.y) {
-                console.log(lose)
                 snake.lose = true
             }
         }
@@ -10,23 +9,24 @@ const gameOver = () => {
     })
 }
 
-const draw = () => {
+const draw = () => { // desenhando todos os elementos
     background.draw()
     snake.drawSnake()
     fruit.draw()
 }
 
-const update = () => {
-    snake.updateSnake()
-    fruit.update()
+const update = () => { // dando atualizada em todos os objetos
+        snake.updateSnake()
+        fruit.update()
 }
 
-const loop = () => {
+const loop = () => { // iniciando um loop dentro do canvas
     draw()
     update()
     gameOver()
     requestAnimationFrame(loop)
 }
 
-snake.keyPressSnakeMove()
+snake.keyPressSnakeMove() // iniciando o sistema de clicks
+
 loop()
